@@ -77,24 +77,19 @@ async function main() {
 
   const categories = await Promise.all([
     prisma.category.upsert({
-      where: { name: 'Work' },
+      where: { name: 'Accounting' },
       update: {},
-      create: { name: 'Work' }
+      create: { name: 'Accounting' }
     }),
     prisma.category.upsert({
-      where: { name: 'Personal' },
+      where: { name: 'Tax Filing' },
       update: {},
-      create: { name: 'Personal' }
+      create: { name: 'Tax Filing' }
     }),
     prisma.category.upsert({
-      where: { name: 'Urgent' },
+      where: { name: 'Audit' },
       update: {},
-      create: { name: 'Urgent' }
-    }),
-    prisma.category.upsert({
-      where: { name: 'Meeting' },
-      update: {},
-      create: { name: 'Meeting' }
+      create: { name: 'Audit' }
     }),
     prisma.category.upsert({
       where: { name: 'Development' },
@@ -102,9 +97,24 @@ async function main() {
       create: { name: 'Development' }
     }),
     prisma.category.upsert({
-      where: { name: 'Design' },
+      where: { name: 'Code Review' },
       update: {},
-      create: { name: 'Design' }
+      create: { name: 'Code Review' }
+    }),
+    prisma.category.upsert({
+      where: { name: 'Client Meeting' },
+      update: {},
+      create: { name: 'Client Meeting' }
+    }),
+    prisma.category.upsert({
+      where: { name: 'Documentation' },
+      update: {},
+      create: { name: 'Documentation' }
+    }),
+    prisma.category.upsert({
+      where: { name: 'Compliance' },
+      update: {},
+      create: { name: 'Compliance' }
     })
   ]);
   console.log('✅ Categories created');
@@ -119,156 +129,164 @@ async function main() {
 
   const tasks = [
     {
-      title: 'Complete project documentation',
-      description: 'Write comprehensive documentation for the task tracker project',
+      title: 'Prepare quarterly financial statements',
+      description: 'Compile and review Q3 financial statements for ABC Corporation',
       status: 'TODO',
       dueDate: nextWeek,
       userId: users[0].id,
-      categoryIds: [categories[0].id, categories[4].id]
+      categoryIds: [categories[0].id, categories[6].id]
     },
     {
-      title: 'Review pull requests',
-      description: 'Review and merge pending pull requests from team members',
+      title: 'GST return filing for clients',
+      description: 'File GST returns for 5 corporate clients before deadline',
       status: 'DOING',
       dueDate: tomorrow,
       userId: users[0].id,
-      categoryIds: [categories[0].id, categories[2].id]
+      categoryIds: [categories[1].id, categories[7].id]
     },
     {
-      title: 'Team standup meeting',
-      description: 'Daily standup with development team',
+      title: 'Annual audit report submission',
+      description: 'Complete and submit annual audit report for XYZ Ltd',
       status: 'DONE',
       dueDate: yesterday,
       userId: users[0].id,
+      categoryIds: [categories[2].id]
+    },
+    {
+      title: 'Implement payment gateway integration',
+      description: 'Integrate Stripe payment gateway in e-commerce platform',
+      status: 'TODO',
+      dueDate: nextWeek,
+      userId: users[1].id,
       categoryIds: [categories[3].id]
     },
     {
-      title: 'Design new landing page',
-      description: 'Create mockups for the new landing page design',
-      status: 'TODO',
-      dueDate: nextWeek,
-      userId: users[1].id,
-      categoryIds: [categories[0].id, categories[5].id]
-    },
-    {
-      title: 'Update user profile UI',
-      description: 'Improve the user profile interface with new design',
+      title: 'Review pull requests for authentication module',
+      description: 'Code review for new JWT authentication implementation',
       status: 'DOING',
       dueDate: tomorrow,
       userId: users[1].id,
-      categoryIds: [categories[5].id, categories[2].id]
+      categoryIds: [categories[4].id, categories[3].id]
     },
     {
-      title: 'Fix authentication bug',
-      description: 'Resolve the login issue reported by users',
+      title: 'Fix production bug in user dashboard',
+      description: 'Resolve critical bug affecting user data display',
       status: 'DONE',
       dueDate: yesterday,
       userId: users[1].id,
-      categoryIds: [categories[0].id, categories[4].id]
+      categoryIds: [categories[3].id]
     },
     {
-      title: 'Prepare presentation slides',
-      description: 'Create slides for client presentation next week',
+      title: 'Client consultation for tax planning',
+      description: 'Meeting with client to discuss tax optimization strategies',
       status: 'TODO',
       dueDate: nextWeek,
       userId: users[2].id,
-      categoryIds: [categories[0].id, categories[3].id]
+      categoryIds: [categories[5].id, categories[1].id]
     },
     {
-      title: 'Database optimization',
-      description: 'Optimize database queries for better performance',
+      title: 'Database optimization and indexing',
+      description: 'Optimize database queries and add proper indexes',
       status: 'DOING',
       dueDate: tomorrow,
       userId: users[2].id,
-      categoryIds: [categories[0].id, categories[4].id, categories[2].id]
+      categoryIds: [categories[3].id]
     },
     {
-      title: 'Code review session',
-      description: 'Conduct code review with junior developers',
+      title: 'Complete API documentation',
+      description: 'Document all REST API endpoints with examples',
       status: 'DONE',
       dueDate: yesterday,
       userId: users[2].id,
+      categoryIds: [categories[6].id, categories[3].id]
+    },
+    {
+      title: 'Income tax return filing - Individual clients',
+      description: 'Prepare and file ITR for 10 individual clients',
+      status: 'TODO',
+      dueDate: nextWeek,
+      userId: users[3].id,
+      categoryIds: [categories[1].id]
+    },
+    {
+      title: 'Reconcile bank statements',
+      description: 'Monthly bank reconciliation for corporate accounts',
+      status: 'DOING',
+      dueDate: tomorrow,
+      userId: users[3].id,
       categoryIds: [categories[0].id]
     },
     {
-      title: 'Grocery shopping',
-      description: 'Buy groceries for the week',
+      title: 'Setup CI/CD pipeline',
+      description: 'Configure GitHub Actions for automated testing and deployment',
       status: 'TODO',
-      dueDate: tomorrow,
-      userId: users[0].id,
-      categoryIds: [categories[1].id]
-    },
-    {
-      title: 'Gym workout',
-      description: 'Evening workout session at the gym',
-      status: 'TODO',
-      dueDate: today,
-      userId: users[1].id,
-      categoryIds: [categories[1].id]
-    },
-    {
-      title: 'Read technical book',
-      description: 'Continue reading "Clean Code" by Robert Martin',
-      status: 'DOING',
       dueDate: nextWeek,
-      userId: users[2].id,
-      categoryIds: [categories[1].id]
+      userId: users[4].id,
+      categoryIds: [categories[3].id]
+    },
+    {
+      title: 'Conduct internal audit',
+      description: 'Perform internal audit for compliance verification',
+      status: 'DOING',
+      dueDate: tomorrow,
+      userId: users[4].id,
+      categoryIds: [categories[2].id, categories[7].id]
     },
     {
       title: 'Update API documentation',
       description: 'Document new endpoints and update existing ones',
       status: 'TODO',
       dueDate: nextWeek,
-      userId: users[3].id,
-      categoryIds: [categories[0].id, categories[4].id]
+      userId: admin.id,
+      categoryIds: [categories[6].id, categories[3].id]
     },
     {
-      title: 'Client feedback review',
-      description: 'Review and implement client feedback from last sprint',
+      title: 'Review team code submissions',
+      description: 'Review and approve pending code submissions from team',
       status: 'DOING',
       dueDate: tomorrow,
-      userId: users[3].id,
-      categoryIds: [categories[0].id, categories[2].id]
+      userId: admin.id,
+      categoryIds: [categories[4].id]
     },
     {
-      title: 'Security audit',
-      description: 'Perform security audit on authentication system',
+      title: 'Prepare TDS returns',
+      description: 'Compile and file TDS returns for Q2',
       status: 'TODO',
       dueDate: nextWeek,
-      userId: users[4].id,
-      categoryIds: [categories[0].id, categories[2].id, categories[4].id]
-    },
-    {
-      title: 'Team building event',
-      description: 'Organize team building activities for next month',
-      status: 'TODO',
-      dueDate: nextWeek,
-      userId: users[4].id,
-      categoryIds: [categories[1].id]
-    },
-    {
-      title: 'Performance optimization',
-      description: 'Optimize frontend bundle size and loading time',
-      status: 'DOING',
-      dueDate: tomorrow,
       userId: users[0].id,
-      categoryIds: [categories[0].id, categories[4].id]
+      categoryIds: [categories[1].id, categories[7].id]
     },
     {
-      title: 'Write unit tests',
-      description: 'Add unit tests for new features',
+      title: 'Client meeting - Financial advisory',
+      description: 'Discuss investment portfolio and financial planning',
       status: 'TODO',
       dueDate: nextWeek,
-      userId: users[1].id,
-      categoryIds: [categories[0].id, categories[4].id]
+      userId: users[2].id,
+      categoryIds: [categories[5].id]
     },
     {
-      title: 'Deploy to staging',
-      description: 'Deploy latest changes to staging environment',
+      title: 'Implement microservices architecture',
+      description: 'Refactor monolithic application to microservices',
+      status: 'DOING',
+      dueDate: tomorrow,
+      userId: users[1].id,
+      categoryIds: [categories[3].id]
+    },
+    {
+      title: 'Write unit tests for new features',
+      description: 'Add comprehensive unit tests for payment module',
+      status: 'TODO',
+      dueDate: nextWeek,
+      userId: users[4].id,
+      categoryIds: [categories[3].id]
+    },
+    {
+      title: 'Compliance audit preparation',
+      description: 'Prepare documents and reports for upcoming compliance audit',
       status: 'DONE',
       dueDate: yesterday,
-      userId: users[2].id,
-      categoryIds: [categories[0].id, categories[2].id]
+      userId: users[3].id,
+      categoryIds: [categories[7].id, categories[2].id]
     }
   ];
 
