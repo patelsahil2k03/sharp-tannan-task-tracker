@@ -2,7 +2,7 @@ import prisma from '../config/database.js';
 
 export const createTask = async (req, res) => {
   try {
-    const { title, description, dueDate, categoryIds } = req.body;
+    const { title, description, dueDate, categoryIds, priority } = req.body;
 
     if (!title || !dueDate) {
       return res.status(400).json({ error: 'Title and due date are required' });
@@ -12,6 +12,7 @@ export const createTask = async (req, res) => {
       title,
       description,
       dueDate: new Date(dueDate),
+      priority: priority || 'MEDIUM',
       userId: req.user.id
     };
 
@@ -84,7 +85,7 @@ export const getTaskById = async (req, res) => {
 export const updateTask = async (req, res) => {
   try {
     const { id } = req.params;
-    const { title, description, status, dueDate, categoryIds } = req.body;
+    const { title, description, status, dueDate, categoryIds, priority } = req.body;
 
     const existingTask = await prisma.task.findUnique({
       where: { id }
@@ -113,6 +114,7 @@ export const updateTask = async (req, res) => {
     if (description !== undefined) updateData.description = description;
     if (status !== undefined) updateData.status = status;
     if (dueDate !== undefined) updateData.dueDate = new Date(dueDate);
+    if (priority !== undefined) updateData.priority = priority;
 
     if (categoryIds !== undefined) {
       updateData.categories = {
