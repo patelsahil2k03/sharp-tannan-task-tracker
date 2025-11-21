@@ -269,8 +269,8 @@ NEXT_PUBLIC_API_URL=http://localhost:5000/api
 Pre-seeded data includes:
 - 1 Admin user
 - 5 Normal users
-- 6 Categories (Work, Personal, Urgent, Meeting, Development, Design)
-- 20 Sample tasks with various statuses, priorities, and due dates
+- 8 Categories (Accounting, Tax Filing, Audit, Development, Code Review, Client Meeting, Documentation, Compliance)
+- 20 Professional tasks (Chartered Accountant and Software Developer tasks)
 
 ## 🎯 Keyboard Shortcuts
 
