@@ -118,8 +118,10 @@ export default function Tasks() {
       if (sortBy === 'dueDate') {
         return new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime();
       } else if (sortBy === 'priority') {
-        const priorityOrder = { HIGH: 3, MEDIUM: 2, LOW: 1 };
-        return (priorityOrder[(b as any).priority] || 0) - (priorityOrder[(a as any).priority] || 0);
+        const priorityOrder: { [key: string]: number } = { HIGH: 3, MEDIUM: 2, LOW: 1 };
+        const aPriority = (a as any).priority || 'MEDIUM';
+        const bPriority = (b as any).priority || 'MEDIUM';
+        return (priorityOrder[bPriority] || 0) - (priorityOrder[aPriority] || 0);
       } else {
         return new Date(b.dueDate).getTime() - new Date(a.dueDate).getTime();
       }
