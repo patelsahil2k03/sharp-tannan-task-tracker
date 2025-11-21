@@ -12,6 +12,7 @@ import Toast from '@/components/Toast';
 import ConfirmDialog from '@/components/ConfirmDialog';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import KeyboardShortcuts from '@/components/KeyboardShortcuts';
+import TaskCardSkeleton from '@/components/TaskCardSkeleton';
 
 interface Task {
   id: string;
@@ -39,6 +40,7 @@ export default function Tasks() {
   const [searchQuery, setSearchQuery] = useState('');
   const [filterPriority, setFilterPriority] = useState<string>('');
   const [sortBy, setSortBy] = useState<'dueDate' | 'priority' | 'created'>('dueDate');
+  const [tasksLoading, setTasksLoading] = useState(true);
   const searchInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -55,10 +57,13 @@ export default function Tasks() {
 
   const fetchTasks = async () => {
     try {
+      setTasksLoading(true);
       const { data } = await api.get('/tasks');
       setTasks(data);
     } catch (error) {
       showToast('Failed to fetch tasks', 'error');
+    } finally {
+      setTasksLoading(false);
     }
   };
 
@@ -227,25 +232,35 @@ export default function Tasks() {
               </div>
               
               <div className="space-y-3">
-                <AnimatePresence mode="popLayout">
-                  {getTasksByStatus(status).map((task) => (
-                    <TaskCard
-                      key={task.id}
-                      task={task}
-                      onEdit={handleEditTask}
-                      onDelete={handleDeleteTask}
-                      onStatusChange={handleStatusChange}
-                    />
-                  ))}
-                </AnimatePresence>
-                
-                {getTasksByStatus(status).length === 0 && (
-                  <div className="text-center py-12 bg-white dark:bg-gray-800 rounded-lg border-2 border-dashed border-gray-200 dark:border-gray-700">
-                    <svg className="w-12 h-12 text-gray-300 dark:text-gray-600 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                    </svg>
-                    <p className="text-gray-400 dark:text-gray-500 text-sm">No tasks</p>
-                  </div>
+                {tasksLoading ? (
+                  <>
+                    <TaskCardSkeleton />
+                    <TaskCardSkeleton />
+                    <TaskCardSkeleton />
+                  </>
+                ) : (
+                  <>
+                    <AnimatePresence mode="popLayout">
+                      {getTasksByStatus(status).map((task) => (
+                        <TaskCard
+                          key={task.id}
+                          task={task}
+                          onEdit={handleEditTask}
+                          onDelete={handleDeleteTask}
+                          onStatusChange={handleStatusChange}
+                        />
+                      ))}
+                    </AnimatePresence>
+                    
+                    {getTasksByStatus(status).length === 0 && (
+                      <div className="text-center py-12 bg-white dark:bg-gray-800 rounded-lg border-2 border-dashed border-gray-200 dark:border-gray-700">
+                        <svg className="w-12 h-12 text-gray-300 dark:text-gray-600 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                        <p className="text-gray-400 dark:text-gray-500 text-sm">No tasks</p>
+                      </div>
+                    )}
+                  </>
                 )}
               </div>
             </div>
