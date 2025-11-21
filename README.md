@@ -2,6 +2,10 @@
 
 A modern, full-stack task management application featuring user authentication, role-based access control, and comprehensive admin dashboard capabilities.
 
+## 🎥 Video Demo
+
+[Watch the complete system demonstration](https://drive.google.com/file/d/1vbVb66bdnBLk9rkT4kK5-VysPaiw9yiB/view?usp=sharing)
+
 ## 🎯 Overview
 
 Task Tracker Lite is a production-ready web application designed to streamline task management for teams and individuals. Built with modern technologies and best practices, it offers an intuitive Kanban-style interface with powerful features for organizing, tracking, and managing tasks efficiently.
