@@ -1,96 +1,106 @@
 # Task Tracker Lite
 
-A full-stack task management application with user authentication, role-based access control, and admin dashboard built for Sharp and Tannan.
+A modern, full-stack task management application featuring user authentication, role-based access control, and comprehensive admin dashboard capabilities.
 
-## 🎯 Features
+## 🎯 Overview
 
-### Core Features
-- **User Authentication**: Secure registration and login with JWT tokens
-- **Role Management**: Admin and Normal User roles with different permissions
-- **Category Management**: Admin-only CRUD operations for task categories
-- **Task Management**: Create, update, delete tasks with multiple categories
-- **Kanban Board**: Visual task organization (Todo → Doing → Done)
-- **Status Tracking**: Automatic due date validation for status changes
-- **Admin Dashboard**: Complete overview with filtering and statistics
+Task Tracker Lite is a production-ready web application designed to streamline task management for teams and individuals. Built with modern technologies and best practices, it offers an intuitive Kanban-style interface with powerful features for organizing, tracking, and managing tasks efficiently.
+
+## ✨ Key Features
+
+### Core Functionality
+- **Secure Authentication** - JWT-based authentication with password hashing
+- **Role-Based Access Control** - Separate permissions for Admin and Normal users
+- **Category Management** - Admin-controlled task categorization system
+- **Task Management** - Complete CRUD operations with multi-category support
+- **Kanban Board** - Visual task organization across Todo, Doing, and Done columns
+- **Status Validation** - Automatic enforcement of due date rules for status changes
+- **Admin Dashboard** - Comprehensive overview with filtering and analytics
 
 ### Enhanced Features
-- **Task Priority**: Low, Medium, High priority levels with color-coded badges
-- **Search Functionality**: Real-time task search by title and description
-- **Toast Notifications**: Success/error feedback for all actions
-- **Confirm Dialogs**: Safe deletion with confirmation prompts
-- **Smooth Animations**: Framer Motion powered transitions
-- **Responsive Design**: Mobile-first, works on all devices
-- **Loading States**: Elegant loading indicators
-- **Dark Mode**: Toggle between light and dark themes with persistence
-- **Keyboard Shortcuts**: ⌘K for search, ⌘N for new task
-- **Task Filtering**: Filter by priority level
-- **Task Sorting**: Sort by due date, priority, or created date
-- **Task Statistics**: Real-time dashboard showing task counts and overdue items
+- **Priority Levels** - Color-coded task priorities (Low, Medium, High)
+- **Real-time Search** - Instant task filtering by title and description
+- **Smart Notifications** - Toast notifications for all user actions
+- **Confirmation Dialogs** - Safe deletion with user confirmation
+- **Dark Mode** - Theme toggle with persistent user preference
+- **Keyboard Shortcuts** - Quick actions (⌘K for search, ⌘N for new task)
+- **Advanced Filtering** - Filter tasks by priority level
+- **Flexible Sorting** - Sort by due date, priority, or creation date
+- **Task Statistics** - Real-time dashboard with task counts and metrics
+- **Smooth Animations** - Framer Motion powered transitions
+- **Responsive Design** - Mobile-first approach, works on all devices
+- **Accessibility** - ARIA labels and semantic HTML
+- **SEO Optimized** - Proper meta tags and structured data
 
-## 🛠️ Tech Stack
+## 🛠️ Technology Stack
 
-**Backend:**
-- Node.js + Express (MVC Architecture)
-- PostgreSQL (Database)
-- Prisma ORM (Type-safe database access)
-- JWT Authentication
-- bcryptjs (Password hashing)
+### Backend
+- **Runtime** - Node.js with Express.js
+- **Database** - PostgreSQL
+- **ORM** - Prisma (Type-safe database access)
+- **Authentication** - JWT tokens with bcryptjs password hashing
+- **Architecture** - MVC pattern for clean code organization
 
-**Frontend:**
-- Next.js 14 (React Framework)
-- TypeScript
-- TailwindCSS (Styling)
-- Framer Motion (Animations)
-- Axios (API calls)
+### Frontend
+- **Framework** - Next.js 14 (React with App Router)
+- **Language** - TypeScript
+- **Styling** - TailwindCSS with dark mode support
+- **Animations** - Framer Motion
+- **HTTP Client** - Axios with interceptors
 
-**DevOps:**
-- Docker + Docker Compose
-- Multi-container setup
+### DevOps
+- **Containerization** - Docker with Docker Compose
+- **Environment** - Multi-container setup (PostgreSQL, Backend, Frontend)
 
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Docker and Docker Compose installed
+- Docker and Docker Compose installed on your system
+- Git for cloning the repository
 
-### Run with Docker (Recommended)
+### Installation & Setup
 
+1. **Clone the repository**
 ```bash
-# Clone the repository
 git clone https://github.com/patelsahil2k03/sharp-tannan-task-tracker.git
 cd sharp-tannan-task-tracker
+```
 
-# Start all services
+2. **Start the application**
+```bash
 docker-compose up --build
 ```
 
-The application will be available at:
-- **Frontend**: http://localhost:3000
-- **Backend API**: http://localhost:5000
+3. **Access the application**
+- Frontend: http://localhost:3000
+- Backend API: http://localhost:5000
+
+The application will automatically:
+- Set up the PostgreSQL database
+- Run database migrations
+- Seed sample data (users, categories, tasks)
+- Start all services
 
 ### Default Credentials
 
-**Admin Account:**
+**Admin Account**
 ```
 Email: admin@sharpandtannan.com
 Password: Admin@123
 ```
 
-**User Accounts:**
+**Sample User Accounts**
 ```
-Email: john.doe@example.com
-Password: User@123
-
-Email: jane.smith@example.com
-Password: User@123
-
-Email: mike.wilson@example.com
-Password: User@123
+john.doe@example.com / User@123
+jane.smith@example.com / User@123
+mike.wilson@example.com / User@123
+sarah.johnson@example.com / User@123
+david.brown@example.com / User@123
 ```
 
 ## 💻 Local Development
 
 ### Backend Setup
-
 ```bash
 cd backend
 npm install
@@ -100,45 +110,50 @@ npx prisma migrate dev
 npx prisma db seed
 npm run dev
 ```
-
 Backend runs on: http://localhost:5000
 
 ### Frontend Setup
-
 ```bash
 cd frontend
 npm install
 cp .env.example .env.local
 npm run dev
 ```
-
 Frontend runs on: http://localhost:3000
 
-## 📡 API Endpoints
+## 📡 API Documentation
 
-### Authentication
-- `POST /api/auth/register` - Register new user
-- `POST /api/auth/login` - Login user
-- `POST /api/auth/logout` - Logout user
-- `GET /api/auth/me` - Get current user info
+### Authentication Endpoints
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/api/auth/register` | Register new user |
+| POST | `/api/auth/login` | User login |
+| POST | `/api/auth/logout` | User logout |
+| GET | `/api/auth/me` | Get current user |
 
-### Categories (Admin only)
-- `GET /api/categories` - Get all categories
-- `POST /api/categories` - Create category
-- `PUT /api/categories/:id` - Update category
-- `DELETE /api/categories/:id` - Delete category
+### Category Endpoints (Admin Only)
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/categories` | List all categories |
+| POST | `/api/categories` | Create category |
+| PUT | `/api/categories/:id` | Update category |
+| DELETE | `/api/categories/:id` | Delete category |
 
-### Tasks
-- `GET /api/tasks` - Get user's tasks
-- `POST /api/tasks` - Create task
-- `GET /api/tasks/:id` - Get task by ID
-- `PUT /api/tasks/:id` - Update task
-- `DELETE /api/tasks/:id` - Delete task
+### Task Endpoints
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/tasks` | Get user's tasks |
+| POST | `/api/tasks` | Create new task |
+| GET | `/api/tasks/:id` | Get task details |
+| PUT | `/api/tasks/:id` | Update task |
+| DELETE | `/api/tasks/:id` | Delete task |
 
-### Admin Dashboard
-- `GET /api/admin/tasks` - Get all tasks (with filters: userId, status, dueDateFrom, dueDateTo)
-- `GET /api/admin/users` - Get all users with task counts
-- `GET /api/admin/stats` - Get dashboard statistics
+### Admin Dashboard Endpoints
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/admin/tasks` | Get all tasks with filters |
+| GET | `/api/admin/users` | Get all users |
+| GET | `/api/admin/stats` | Get statistics |
 
 ## 📁 Project Structure
 
@@ -146,33 +161,24 @@ Frontend runs on: http://localhost:3000
 ├── backend/
 │   ├── src/
 │   │   ├── controllers/      # Business logic
-│   │   │   ├── authController.js
-│   │   │   ├── categoryController.js
-│   │   │   ├── taskController.js
-│   │   └── adminController.js
 │   │   ├── routes/           # API routes
-│   │   ├── middleware/       # Auth & validation
-│   │   ├── config/           # Database config
+│   │   ├── middleware/       # Authentication & validation
+│   │   ├── config/           # Database configuration
 │   │   └── utils/            # Helper functions
 │   ├── prisma/
 │   │   ├── schema.prisma     # Database schema
-│   │   └── seed.js           # Initial data
+│   │   └── seed.js           # Sample data
 │   └── Dockerfile
 ├── frontend/
 │   ├── app/                  # Next.js pages
-│   │   ├── login/
-│   │   ├── register/
-│   │   ├── tasks/            # Kanban board
-│   │   ├── categories/       # Category management
-│   │   └── admin/            # Admin dashboard
 │   ├── components/           # Reusable components
-│   ├── lib/                  # API client & context
+│   ├── lib/                  # Utilities & context
 │   └── Dockerfile
 ├── docker-compose.yml
 └── README.md
 ```
 
-## 🔧 Environment Variables
+## 🔧 Environment Configuration
 
 ### Backend (.env)
 ```env
@@ -190,78 +196,60 @@ NEXT_PUBLIC_API_URL=http://localhost:5000/api
 
 ## 📋 Business Rules
 
-1. **User Registration**: 
-   - Email must be unique
-   - Password must match confirmation
-   - New users get "USER" role by default
+### User Management
+- Email addresses must be unique
+- Passwords are hashed using bcryptjs
+- New users are assigned "USER" role by default
+- JWT tokens expire after 7 days
 
-2. **Categories**: 
-   - Only admins can create, update, or delete categories
-   - Category names must be unique
-   - All users can view categories
+### Category Management
+- Only Admin users can create, update, or delete categories
+- Category names must be unique
+- All users can view and assign categories to tasks
 
-3. **Tasks**: 
-   - Users can only view and manage their own tasks
-   - Tasks can have multiple categories
-   - **Status can only be changed BEFORE the due date**
-   - Title, description, categories, and priority can be edited anytime
-   - Tasks are organized in Kanban board: Todo → Doing → Done
-   - Priority levels: Low (Green), Medium (Yellow), High (Red)
+### Task Management
+- Users can only view and manage their own tasks
+- Tasks support multiple categories
+- Task status can only be changed before the due date
+- Task details (title, description, categories, priority) can be edited anytime
+- Priority levels: Low (Green), Medium (Yellow), High (Red)
 
-4. **Admin Dashboard**: 
-   - Admins can view all tasks from all users
-   - Filter tasks by user, status, or due date range
-   - View statistics: total users, tasks, categories, overdue tasks
-
-## ✨ Features Implemented
-
-✅ User authentication with JWT  
-✅ Role-based access control (Admin/User)  
-✅ Category management (Admin only)  
-✅ Task CRUD operations  
-✅ Kanban board interface  
-✅ Due date validation for status changes  
-✅ Admin dashboard with filters  
-✅ Statistics and analytics  
-✅ Task priority levels  
-✅ Search functionality  
-✅ Toast notifications  
-✅ Confirm dialogs  
-✅ Smooth animations  
-✅ Fully Dockerized setup  
-✅ Responsive UI with TailwindCSS  
-✅ Loading states  
-✅ 404 page  
-✅ Dark mode with theme persistence  
-✅ Keyboard shortcuts (⌘K, ⌘N)  
-✅ Task filtering by priority  
-✅ Task sorting (due date, priority, created)  
-✅ Real-time task statistics dashboard  
-✅ SEO optimized with meta tags  
-✅ Accessibility improvements (ARIA labels)  
+### Admin Capabilities
+- View all tasks from all users
+- Filter tasks by user, status, or date range
+- Access comprehensive statistics dashboard
+- Manage categories system-wide
 
 ## 🎨 UI/UX Features
 
-- **Minimalistic Design**: Clean, modern interface inspired by Linear and Notion
-- **Smooth Animations**: Framer Motion powered transitions
-- **Hover Effects**: Interactive elements with visual feedback
-- **Color-Coded Priority**: Visual priority indicators
-- **Empty States**: Helpful illustrations when no data
-- **Mobile Responsive**: Works seamlessly on all screen sizes
-- **Sticky Navigation**: Always accessible navigation bar
+- **Minimalistic Design** - Clean, modern interface
+- **Smooth Animations** - Framer Motion powered transitions
+- **Interactive Elements** - Hover effects and visual feedback
+- **Color-Coded System** - Visual priority and status indicators
+- **Empty States** - Helpful messages when no data exists
+- **Mobile Responsive** - Seamless experience across all devices
+- **Sticky Navigation** - Always accessible navigation bar
+- **Dark Mode** - Eye-friendly theme with persistence
 
 ## 🧪 Sample Data
 
-The application comes pre-seeded with:
+Pre-seeded data includes:
 - 1 Admin user
 - 5 Normal users
 - 6 Categories (Work, Personal, Urgent, Meeting, Development, Design)
 - 20 Sample tasks with various statuses, priorities, and due dates
 
+## 🎯 Keyboard Shortcuts
+
+- `⌘K` or `Ctrl+K` - Focus search
+- `⌘N` or `Ctrl+N` - Create new task
+
 ## 📝 License
 
-MIT
+MIT License - See LICENSE file for details
 
 ---
 
-**Built with ❤️ for Sharp and Tannan**
+**Developed by Sahil Patel for Sharp and Tannan**
+
+*A modern task management solution built with cutting-edge technologies and best practices.*
