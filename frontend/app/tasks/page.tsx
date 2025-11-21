@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useAuth } from '@/lib/AuthContext';
 import { useRouter } from 'next/navigation';
+import { AnimatePresence } from 'framer-motion';
 import api from '@/lib/api';
 import Navbar from '@/components/Navbar';
 import TaskCard from '@/components/TaskCard';
@@ -125,15 +126,17 @@ export default function Tasks() {
               </div>
               
               <div className="space-y-3">
-                {getTasksByStatus(status).map((task) => (
-                  <TaskCard
-                    key={task.id}
-                    task={task}
-                    onEdit={handleEditTask}
-                    onDelete={handleDeleteTask}
-                    onStatusChange={handleStatusChange}
-                  />
-                ))}
+                <AnimatePresence mode="popLayout">
+                  {getTasksByStatus(status).map((task) => (
+                    <TaskCard
+                      key={task.id}
+                      task={task}
+                      onEdit={handleEditTask}
+                      onDelete={handleDeleteTask}
+                      onStatusChange={handleStatusChange}
+                    />
+                  ))}
+                </AnimatePresence>
                 
                 {getTasksByStatus(status).length === 0 && (
                   <div className="text-center py-12 bg-white rounded-lg border-2 border-dashed border-gray-200">
@@ -149,13 +152,15 @@ export default function Tasks() {
         </div>
       </div>
 
-      {isModalOpen && (
-        <TaskModal
-          task={selectedTask}
-          onClose={() => setIsModalOpen(false)}
-          onSuccess={fetchTasks}
-        />
-      )}
+      <AnimatePresence>
+        {isModalOpen && (
+          <TaskModal
+            task={selectedTask}
+            onClose={() => setIsModalOpen(false)}
+            onSuccess={fetchTasks}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 }

@@ -1,5 +1,7 @@
 'use client';
 
+import { motion } from 'framer-motion';
+
 interface Task {
   id: string;
   title: string;
@@ -29,11 +31,20 @@ export default function TaskCard({ task, onEdit, onDelete, onStatusChange }: Tas
   const nextStatus = getNextStatus();
 
   return (
-    <div className="bg-white rounded-lg p-4 border border-gray-200 hover:shadow-lg hover:border-primary/30 transition-all duration-200 group">
+    <motion.div
+      layout
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, scale: 0.9 }}
+      whileHover={{ scale: 1.02 }}
+      transition={{ duration: 0.2 }}
+      className="bg-white rounded-lg p-4 border border-gray-200 hover:shadow-lg hover:border-primary/30 transition-all duration-200 group cursor-pointer">
       <div className="flex justify-between items-start mb-3">
         <h3 className="font-semibold text-gray-800 group-hover:text-primary transition">{task.title}</h3>
         <div className="flex space-x-1 opacity-0 group-hover:opacity-100 transition-opacity">
-          <button
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
             onClick={() => onEdit(task)}
             className="p-1.5 text-gray-400 hover:text-primary hover:bg-blue-50 rounded transition"
             title="Edit task"
@@ -41,8 +52,10 @@ export default function TaskCard({ task, onEdit, onDelete, onStatusChange }: Tas
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
             </svg>
-          </button>
-          <button
+          </motion.button>
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
             onClick={() => onDelete(task.id)}
             className="p-1.5 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded transition"
             title="Delete task"
@@ -50,7 +63,7 @@ export default function TaskCard({ task, onEdit, onDelete, onStatusChange }: Tas
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
             </svg>
-          </button>
+          </motion.button>
         </div>
       </div>
 
@@ -79,18 +92,20 @@ export default function TaskCard({ task, onEdit, onDelete, onStatusChange }: Tas
         </div>
         
         {nextStatus && canChangeStatus && (
-          <button
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             onClick={() => onStatusChange(task.id, nextStatus)}
             className="text-xs bg-primary text-white px-3 py-1.5 rounded-lg hover:bg-blue-700 transition font-medium"
           >
             {nextStatus === 'DOING' ? '→ In Progress' : '→ Done'}
-          </button>
+          </motion.button>
         )}
         
         {!canChangeStatus && task.status !== 'DONE' && (
           <span className="text-xs text-red-500 font-medium">Locked</span>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 }
