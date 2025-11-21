@@ -28,5 +28,15 @@ services:
       - db
     command: sh -c "npx prisma migrate deploy && npx prisma db seed && npm start"
 
+  frontend:
+    build: ./frontend
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:5000/api
+    depends_on:
+      - backend
+
 volumes:
   postgres-data:
