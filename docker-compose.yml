@@ -26,7 +26,7 @@ services:
       NODE_ENV: production
     depends_on:
       - db
-    command: sh -c "npx prisma migrate deploy && npx prisma db seed && npm start"
+    command: sh -c "sleep 5 && npx prisma db push && npx prisma db seed && npm start"
 
   frontend:
     build: ./frontend
