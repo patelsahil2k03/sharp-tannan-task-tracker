@@ -55,10 +55,10 @@ Task Tracker Lite is a production-ready web application designed to streamline t
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Docker and Docker Compose installed on your system
-- Git for cloning the repository
+- **For Docker Setup:** Docker and Docker Compose installed
+- **For Local Setup:** Node.js 20+, PostgreSQL 16+, npm
 
-### Installation & Setup
+### Option 1: Docker Setup (Recommended - Easiest)
 
 1. **Clone the repository**
 ```bash
@@ -72,14 +72,54 @@ docker-compose up --build
 ```
 
 3. **Access the application**
-- Frontend: http://localhost:3000
-- Backend API: http://localhost:5000
+- **Frontend (Main App):** http://localhost:3000
+- **Backend API:** http://localhost:5000
 
 The application will automatically:
-- Set up the PostgreSQL database
-- Run database migrations
-- Seed sample data (users, categories, tasks)
-- Start all services
+- ✅ Set up PostgreSQL database
+- ✅ Run database migrations
+- ✅ Seed sample data (1 admin + 5 users + 20 tasks)
+- ✅ Start all services
+
+**That's it! The app is ready to use.**
+
+### Option 2: Local Development Setup
+
+#### Step 1: Setup PostgreSQL Database
+```bash
+# Install PostgreSQL 16 if not already installed
+# Create database
+createdb tasktracker
+```
+
+#### Step 2: Backend Setup
+```bash
+cd backend
+npm install
+cp .env.example .env
+
+# Edit .env file and update DATABASE_URL:
+# DATABASE_URL="postgresql://postgres:postgres@localhost:5432/tasktracker"
+
+npx prisma generate
+npx prisma migrate dev --name init
+npx prisma db seed
+npm run dev
+```
+✅ Backend running on: http://localhost:5000
+
+#### Step 3: Frontend Setup (Open new terminal)
+```bash
+cd frontend
+npm install
+cp .env.example .env.local
+
+# .env.local should contain:
+# NEXT_PUBLIC_API_URL=http://localhost:5000/api
+
+npm run dev
+```
+✅ Frontend running on: http://localhost:3000
 
 ### Default Credentials
 
@@ -98,28 +138,21 @@ sarah.johnson@example.com / User@123
 david.brown@example.com / User@123
 ```
 
-## 💻 Local Development
+### Stopping the Application
 
-### Backend Setup
+**Docker:**
 ```bash
-cd backend
-npm install
-cp .env.example .env
-npx prisma generate
-npx prisma migrate dev
-npx prisma db seed
-npm run dev
-```
-Backend runs on: http://localhost:5000
+# Stop containers
+docker-compose down
 
-### Frontend Setup
-```bash
-cd frontend
-npm install
-cp .env.example .env.local
-npm run dev
+# Stop and remove all data (fresh start)
+docker-compose down -v
 ```
-Frontend runs on: http://localhost:3000
+
+**Local:**
+```bash
+# Press Ctrl+C in both terminal windows
+```
 
 ## 📡 API Documentation
 
