@@ -34,7 +34,7 @@ export default function Login() {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 px-4">
       <div className="bg-white p-8 rounded-xl shadow-2xl w-full max-w-md">
         <div className="flex flex-col items-center mb-8">
-          <Image src="/logo.png" alt="Sharp & Tannan" width={80} height={80} className="object-contain mb-4" />
+          <Image src="/logo.png" alt="Sharp & Tannan" width={120} height={120} className="object-contain mb-4" />
           <h1 className="text-3xl font-bold text-center text-gray-800">Task Tracker</h1>
           <p className="text-gray-600 text-sm mt-2">Sign in to manage your tasks</p>
         </div>
@@ -42,8 +42,7 @@ export default function Login() {
         <div className="mb-6 relative">
           <button
             type="button"
-            onMouseEnter={() => setShowCredentials(true)}
-            onMouseLeave={() => setShowCredentials(false)}
+            onClick={() => setShowCredentials(!showCredentials)}
             className="w-full bg-blue-50 text-blue-700 px-4 py-3 rounded-lg text-sm flex items-center justify-center space-x-2 hover:bg-blue-100 transition"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -53,7 +52,10 @@ export default function Login() {
           </button>
           
           {showCredentials && (
-            <div className="absolute top-full mt-2 left-0 right-0 bg-gray-800 text-white p-4 rounded-lg shadow-xl z-10 text-sm">
+            <div 
+              className="absolute top-full mt-2 left-0 right-0 bg-gray-800 text-white p-4 rounded-lg shadow-xl z-10 text-sm"
+              onMouseLeave={() => setShowCredentials(false)}
+            >
               <div className="mb-3">
                 <p className="font-semibold mb-1">Admin Account:</p>
                 <p className="text-gray-300">admin@sharpandtannan.com</p>
@@ -64,6 +66,8 @@ export default function Login() {
                 <p className="text-gray-300">john.doe@example.com / User@123</p>
                 <p className="text-gray-300">jane.smith@example.com / User@123</p>
                 <p className="text-gray-300">mike.wilson@example.com / User@123</p>
+                <p className="text-gray-300">sarah.johnson@example.com / User@123</p>
+                <p className="text-gray-300">david.brown@example.com / User@123</p>
               </div>
             </div>
           )}

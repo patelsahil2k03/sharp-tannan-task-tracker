@@ -51,6 +51,26 @@ async function main() {
         password: userPassword,
         role: 'USER'
       }
+    }),
+    prisma.user.upsert({
+      where: { email: 'sarah.johnson@example.com' },
+      update: {},
+      create: {
+        email: 'sarah.johnson@example.com',
+        name: 'Sarah Johnson',
+        password: userPassword,
+        role: 'USER'
+      }
+    }),
+    prisma.user.upsert({
+      where: { email: 'david.brown@example.com' },
+      update: {},
+      create: {
+        email: 'david.brown@example.com',
+        name: 'David Brown',
+        password: userPassword,
+        role: 'USER'
+      }
     })
   ]);
   console.log('✅ Sample users created');
@@ -193,6 +213,62 @@ async function main() {
       dueDate: nextWeek,
       userId: users[2].id,
       categoryIds: [categories[1].id]
+    },
+    {
+      title: 'Update API documentation',
+      description: 'Document new endpoints and update existing ones',
+      status: 'TODO',
+      dueDate: nextWeek,
+      userId: users[3].id,
+      categoryIds: [categories[0].id, categories[4].id]
+    },
+    {
+      title: 'Client feedback review',
+      description: 'Review and implement client feedback from last sprint',
+      status: 'DOING',
+      dueDate: tomorrow,
+      userId: users[3].id,
+      categoryIds: [categories[0].id, categories[2].id]
+    },
+    {
+      title: 'Security audit',
+      description: 'Perform security audit on authentication system',
+      status: 'TODO',
+      dueDate: nextWeek,
+      userId: users[4].id,
+      categoryIds: [categories[0].id, categories[2].id, categories[4].id]
+    },
+    {
+      title: 'Team building event',
+      description: 'Organize team building activities for next month',
+      status: 'TODO',
+      dueDate: nextWeek,
+      userId: users[4].id,
+      categoryIds: [categories[1].id]
+    },
+    {
+      title: 'Performance optimization',
+      description: 'Optimize frontend bundle size and loading time',
+      status: 'DOING',
+      dueDate: tomorrow,
+      userId: users[0].id,
+      categoryIds: [categories[0].id, categories[4].id]
+    },
+    {
+      title: 'Write unit tests',
+      description: 'Add unit tests for new features',
+      status: 'TODO',
+      dueDate: nextWeek,
+      userId: users[1].id,
+      categoryIds: [categories[0].id, categories[4].id]
+    },
+    {
+      title: 'Deploy to staging',
+      description: 'Deploy latest changes to staging environment',
+      status: 'DONE',
+      dueDate: yesterday,
+      userId: users[2].id,
+      categoryIds: [categories[0].id, categories[2].id]
     }
   ];
 
@@ -218,6 +294,8 @@ async function main() {
   console.log('User 1: john.doe@example.com / User@123');
   console.log('User 2: jane.smith@example.com / User@123');
   console.log('User 3: mike.wilson@example.com / User@123');
+  console.log('User 4: sarah.johnson@example.com / User@123');
+  console.log('User 5: david.brown@example.com / User@123');
 }
 
 main()
