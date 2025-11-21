@@ -80,45 +80,45 @@ export default function AdminDashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 transition-colors">
       <Navbar />
       
       <div className="max-w-7xl mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold text-gray-800 mb-8">Admin Dashboard</h1>
+        <h1 className="text-3xl font-bold text-gray-800 dark:text-white mb-8">Admin Dashboard</h1>
 
         {stats && (
           <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-8">
-            <div className="bg-white p-6 rounded-lg shadow">
-              <p className="text-gray-500 text-sm">Total Users</p>
-              <p className="text-3xl font-bold text-gray-800">{stats.totalUsers}</p>
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow border dark:border-gray-700">
+              <p className="text-gray-500 dark:text-gray-400 text-sm">Total Users</p>
+              <p className="text-3xl font-bold text-gray-800 dark:text-white">{stats.totalUsers}</p>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow">
-              <p className="text-gray-500 text-sm">Total Tasks</p>
-              <p className="text-3xl font-bold text-gray-800">{stats.totalTasks}</p>
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow border dark:border-gray-700">
+              <p className="text-gray-500 dark:text-gray-400 text-sm">Total Tasks</p>
+              <p className="text-3xl font-bold text-gray-800 dark:text-white">{stats.totalTasks}</p>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow">
-              <p className="text-gray-500 text-sm">Categories</p>
-              <p className="text-3xl font-bold text-gray-800">{stats.totalCategories}</p>
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow border dark:border-gray-700">
+              <p className="text-gray-500 dark:text-gray-400 text-sm">Categories</p>
+              <p className="text-3xl font-bold text-gray-800 dark:text-white">{stats.totalCategories}</p>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow">
-              <p className="text-gray-500 text-sm">Overdue</p>
-              <p className="text-3xl font-bold text-red-500">{stats.overdueTasks}</p>
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow border dark:border-gray-700">
+              <p className="text-gray-500 dark:text-gray-400 text-sm">Overdue</p>
+              <p className="text-3xl font-bold text-red-500 dark:text-red-400">{stats.overdueTasks}</p>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow">
-              <p className="text-gray-500 text-sm">Completed</p>
-              <p className="text-3xl font-bold text-green-500">{stats.tasksByStatus.DONE || 0}</p>
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow border dark:border-gray-700">
+              <p className="text-gray-500 dark:text-gray-400 text-sm">Completed</p>
+              <p className="text-3xl font-bold text-green-500 dark:text-green-400">{stats.tasksByStatus.DONE || 0}</p>
             </div>
           </div>
         )}
 
-        <div className="bg-white rounded-lg shadow mb-8">
-          <div className="p-6 border-b">
-            <h2 className="text-xl font-semibold text-gray-800 mb-4">Filters</h2>
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow border dark:border-gray-700 mb-8">
+          <div className="p-6 border-b dark:border-gray-700">
+            <h2 className="text-xl font-semibold text-gray-800 dark:text-white mb-4">Filters</h2>
             <div className="flex space-x-4">
               <select
                 value={filterUserId}
                 onChange={(e) => setFilterUserId(e.target.value)}
-                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
+                className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
               >
                 <option value="">All Users</option>
                 {users.map((u) => (
@@ -131,7 +131,7 @@ export default function AdminDashboard() {
               <select
                 value={filterStatus}
                 onChange={(e) => setFilterStatus(e.target.value)}
-                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
+                className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
               >
                 <option value="">All Status</option>
                 <option value="TODO">To Do</option>
@@ -145,7 +145,7 @@ export default function AdminDashboard() {
                     setFilterUserId('');
                     setFilterStatus('');
                   }}
-                  className="text-primary hover:text-blue-700 transition"
+                  className="text-primary dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition"
                 >
                   Clear Filters
                 </button>
@@ -155,22 +155,22 @@ export default function AdminDashboard() {
 
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-gray-50">
+              <thead className="bg-gray-50 dark:bg-gray-700">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Task</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">User</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Due Date</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Categories</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">Task</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">User</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">Status</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">Due Date</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">Categories</th>
                 </tr>
               </thead>
-              <tbody className="divide-y">
+              <tbody className="divide-y dark:divide-gray-700">
                 {tasks.map((task) => {
                   const isOverdue = new Date(task.dueDate) < new Date() && task.status !== 'DONE';
                   return (
-                    <tr key={task.id} className="hover:bg-gray-50">
-                      <td className="px-6 py-4 text-sm text-gray-800">{task.title}</td>
-                      <td className="px-6 py-4 text-sm text-gray-600">{task.user.name}</td>
+                    <tr key={task.id} className="hover:bg-gray-50 dark:hover:bg-gray-700 transition">
+                      <td className="px-6 py-4 text-sm text-gray-800 dark:text-gray-200">{task.title}</td>
+                      <td className="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">{task.user.name}</td>
                       <td className="px-6 py-4">
                         <span className={`px-2 py-1 text-xs rounded ${
                           task.status === 'DONE' ? 'bg-green-100 text-green-700' :
@@ -180,13 +180,13 @@ export default function AdminDashboard() {
                           {task.status}
                         </span>
                       </td>
-                      <td className={`px-6 py-4 text-sm ${isOverdue ? 'text-red-500' : 'text-gray-600'}`}>
+                      <td className={`px-6 py-4 text-sm ${isOverdue ? 'text-red-500 dark:text-red-400' : 'text-gray-600 dark:text-gray-400'}`}>
                         {new Date(task.dueDate).toLocaleDateString()}
                       </td>
                       <td className="px-6 py-4">
                         <div className="flex flex-wrap gap-1">
                           {task.categories.map((cat, idx) => (
-                            <span key={idx} className="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded">
+                            <span key={idx} className="bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 text-xs px-2 py-1 rounded">
                               {cat.name}
                             </span>
                           ))}
@@ -198,7 +198,7 @@ export default function AdminDashboard() {
               </tbody>
             </table>
             {tasks.length === 0 && (
-              <p className="text-gray-400 text-center py-12">No tasks found</p>
+              <p className="text-gray-400 dark:text-gray-500 text-center py-12">No tasks found</p>
             )}
           </div>
         </div>
