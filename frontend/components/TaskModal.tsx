@@ -28,6 +28,7 @@ export default function TaskModal({ task, onClose, onSuccess }: TaskModalProps) 
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [dueDate, setDueDate] = useState('');
+  const [priority, setPriority] = useState('MEDIUM');
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
   const [loading, setLoading] = useState(false);
@@ -39,6 +40,7 @@ export default function TaskModal({ task, onClose, onSuccess }: TaskModalProps) 
       setTitle(task.title);
       setDescription(task.description || '');
       setDueDate(task.dueDate.split('T')[0]);
+      setPriority((task as any).priority || 'MEDIUM');
       setSelectedCategories(task.categories.map(c => c.id));
     }
   }, [task]);
@@ -62,6 +64,7 @@ export default function TaskModal({ task, onClose, onSuccess }: TaskModalProps) 
         title,
         description,
         dueDate: new Date(dueDate).toISOString(),
+        priority,
         categoryIds: selectedCategories
       };
 
