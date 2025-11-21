@@ -40,7 +40,18 @@ export default function TaskCard({ task, onEdit, onDelete, onStatusChange }: Tas
       transition={{ duration: 0.2 }}
       className="bg-white rounded-lg p-4 border border-gray-200 hover:shadow-lg hover:border-primary/30 transition-all duration-200 group cursor-pointer">
       <div className="flex justify-between items-start mb-3">
-        <h3 className="font-semibold text-gray-800 group-hover:text-primary transition">{task.title}</h3>
+        <div className="flex-1">
+          <h3 className="font-semibold text-gray-800 group-hover:text-primary transition">{task.title}</h3>
+          {(task as any).priority && (
+            <span className={`inline-block mt-1 text-xs px-2 py-0.5 rounded-full font-medium ${
+              (task as any).priority === 'HIGH' ? 'bg-red-100 text-red-700' :
+              (task as any).priority === 'MEDIUM' ? 'bg-yellow-100 text-yellow-700' :
+              'bg-green-100 text-green-700'
+            }`}>
+              {(task as any).priority}
+            </span>
+          )}
+        </div>
         <div className="flex space-x-1 opacity-0 group-hover:opacity-100 transition-opacity">
           <motion.button
             whileHover={{ scale: 1.1 }}
