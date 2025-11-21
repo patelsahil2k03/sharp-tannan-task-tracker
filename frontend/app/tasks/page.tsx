@@ -37,6 +37,8 @@ export default function Tasks() {
   const [toast, setToast] = useState<ToastState>({ show: false, message: '', type: 'info' });
   const [deleteConfirm, setDeleteConfirm] = useState<{ show: boolean; taskId: string | null }>({ show: false, taskId: null });
   const [searchQuery, setSearchQuery] = useState('');
+  const [filterPriority, setFilterPriority] = useState<string>('');
+  const [sortBy, setSortBy] = useState<'dueDate' | 'priority' | 'created'>('dueDate');
   const searchInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -103,13 +105,27 @@ export default function Tasks() {
   };
 
   const getTasksByStatus = (status: string) => {
-    return tasks.filter(task => {
+    let filtered = tasks.filter(task => {
       const matchesStatus = task.status === status;
       const matchesSearch = searchQuery === '' || 
         task.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         task.description?.toLowerCase().includes(searchQuery.toLowerCase());
-      return matchesStatus && matchesSearch;
+      const matchesPriority = filterPriority === '' || (task as any).priority === filterPriority;
+      return matchesStatus && matchesSearch && matchesPriority;
     });
+
+    filtered.sort((a, b) => {
+      if (sortBy === 'dueDate') {
+        return new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime();
+      } else if (sortBy === 'priority') {
+        const priorityOrder = { HIGH: 3, MEDIUM: 2, LOW: 1 };
+        return (priorityOrder[(b as any).priority] || 0) - (priorityOrder[(a as any).priority] || 0);
+      } else {
+        return new Date(b.dueDate).getTime() - new Date(a.dueDate).getTime();
+      }
+    });
+
+    return filtered;
   };
 
   if (loading) {
