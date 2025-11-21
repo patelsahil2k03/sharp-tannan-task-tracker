@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useAuth } from '@/lib/AuthContext';
 import { useRouter } from 'next/navigation';
 import { AnimatePresence } from 'framer-motion';
@@ -11,6 +11,7 @@ import TaskModal from '@/components/TaskModal';
 import Toast from '@/components/Toast';
 import ConfirmDialog from '@/components/ConfirmDialog';
 import LoadingSpinner from '@/components/LoadingSpinner';
+import KeyboardShortcuts from '@/components/KeyboardShortcuts';
 
 interface Task {
   id: string;
@@ -36,6 +37,7 @@ export default function Tasks() {
   const [toast, setToast] = useState<ToastState>({ show: false, message: '', type: 'info' });
   const [deleteConfirm, setDeleteConfirm] = useState<{ show: boolean; taskId: string | null }>({ show: false, taskId: null });
   const [searchQuery, setSearchQuery] = useState('');
+  const searchInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (!loading && !user) {
@@ -118,6 +120,11 @@ export default function Tasks() {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
       <Navbar />
       
+      <KeyboardShortcuts
+        onNewTask={handleCreateTask}
+        onSearch={() => searchInputRef.current?.focus()}
+      />
+      
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 space-y-4 md:space-y-0">
           <div>
@@ -127,8 +134,9 @@ export default function Tasks() {
           <div className="flex flex-col md:flex-row space-y-3 md:space-y-0 md:space-x-3 w-full md:w-auto">
             <div className="relative">
               <input
+                ref={searchInputRef}
                 type="text"
-                placeholder="Search tasks..."
+                placeholder="Search tasks... (⌘K)"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none w-full md:w-64"
