@@ -295,6 +295,30 @@ export default function Tasks() {
           ))}
         </div>
 
+        <div className="mb-6 bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm border dark:border-gray-700">
+          <div className="flex justify-between items-center mb-2">
+            <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300">Overall Progress</h3>
+            <span className="text-sm font-semibold text-gray-800 dark:text-white">
+              {tasks.length > 0 ? Math.round((getTasksByStatus('DONE').length / tasks.length) * 100) : 0}%
+            </span>
+          </div>
+          <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+            <div
+              className={`h-3 rounded-full transition-all duration-500 ${
+                tasks.length > 0 && (getTasksByStatus('DONE').length / tasks.length) * 100 < 30
+                  ? 'bg-red-500'
+                  : tasks.length > 0 && (getTasksByStatus('DONE').length / tasks.length) * 100 < 70
+                  ? 'bg-yellow-500'
+                  : 'bg-green-500'
+              }`}
+              style={{ width: `${tasks.length > 0 ? (getTasksByStatus('DONE').length / tasks.length) * 100 : 0}%` }}
+            ></div>
+          </div>
+          <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
+            {getTasksByStatus('DONE').length} of {tasks.length} tasks completed
+          </p>
+        </div>
+
         <div className="mt-8 grid grid-cols-1 md:grid-cols-4 gap-4">
           <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-200 dark:border-gray-700">
             <div className="flex items-center justify-between">
