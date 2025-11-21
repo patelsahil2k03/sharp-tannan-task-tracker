@@ -88,28 +88,38 @@ export default function Tasks() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
       <Navbar />
       
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="flex justify-between items-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-800">My Tasks</h1>
+          <div>
+            <h1 className="text-3xl font-bold text-gray-800">My Tasks</h1>
+            <p className="text-gray-600 mt-1">Organize and track your work</p>
+          </div>
           <button
             onClick={handleCreateTask}
-            className="bg-primary text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition"
+            className="bg-primary text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition shadow-md hover:shadow-lg flex items-center space-x-2"
           >
-            + New Task
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+            </svg>
+            <span>New Task</span>
           </button>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {['TODO', 'DOING', 'DONE'].map((status) => (
-            <div key={status} className="bg-white rounded-lg p-4 shadow">
+          {[
+            { status: 'TODO', label: 'To Do', color: 'bg-gray-100' },
+            { status: 'DOING', label: 'In Progress', color: 'bg-blue-50' },
+            { status: 'DONE', label: 'Done', color: 'bg-green-50' }
+          ].map(({ status, label, color }) => (
+            <div key={status} className={`${color} rounded-xl p-4 shadow-sm`}>
               <div className="flex items-center justify-between mb-4">
-                <h2 className="font-semibold text-gray-700 uppercase text-sm">
-                  {status === 'TODO' ? 'To Do' : status === 'DOING' ? 'In Progress' : 'Done'}
+                <h2 className="font-semibold text-gray-700 uppercase text-sm tracking-wide">
+                  {label}
                 </h2>
-                <span className="bg-gray-100 text-gray-600 px-2 py-1 rounded text-xs">
+                <span className="bg-white text-gray-600 px-3 py-1 rounded-full text-xs font-semibold shadow-sm">
                   {getTasksByStatus(status).length}
                 </span>
               </div>
@@ -126,7 +136,12 @@ export default function Tasks() {
                 ))}
                 
                 {getTasksByStatus(status).length === 0 && (
-                  <p className="text-gray-400 text-sm text-center py-8">No tasks</p>
+                  <div className="text-center py-12 bg-white rounded-lg border-2 border-dashed border-gray-200">
+                    <svg className="w-12 h-12 text-gray-300 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                    <p className="text-gray-400 text-sm">No tasks</p>
+                  </div>
                 )}
               </div>
             </div>
