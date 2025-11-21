@@ -135,6 +135,34 @@ export default function Tasks() {
     return filtered;
   };
 
+  const exportToCSV = () => {
+    const csvData = tasks.map(task => ({
+      Title: task.title,
+      Description: task.description || '',
+      Status: task.status,
+      Priority: (task as any).priority || 'MEDIUM',
+      'Due Date': new Date(task.dueDate).toLocaleDateString(),
+      Categories: task.categories.map(c => c.name).join('; ')
+    }));
+
+    const headers = Object.keys(csvData[0] || {});
+    const csvContent = [
+      headers.join(','),
+      ...csvData.map(row => 
+        headers.map(header => `"${row[header as keyof typeof row]}"`).join(',')
+      )
+    ].join('\n');
+
+    const blob = new Blob([csvContent], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `tasks-${new Date().toISOString().split('T')[0]}.csv`;
+    a.click();
+    window.URL.revokeObjectURL(url);
+    showToast('Tasks exported successfully', 'success');
+  };
+
   if (loading) {
     return <LoadingSpinner />;
   }
