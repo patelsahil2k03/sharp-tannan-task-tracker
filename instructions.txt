@@ -1,0 +1,67 @@
+Sharp And Tannan Task for Full Stack Developer
+Q: Task Tracker Lite — User Authentication, Roles & Task
+Management with Categories
+1. User Authentication System
+The system should include a User Authentication module that supports registration,
+login, and logout functionality. For registration, the API must accept inputs such as
+name, email, password, and confirm password. The password should always be
+stored in a secure hashed form, and the system must ensure that each email
+address is unique. For login, the API should accept an email and password, and if
+the credentials are valid, it should return an authentication token (such as a JWT) or
+establish a secure session. A logout API should also be provided to allow users to
+terminate their session or invalidate their token. Additionally, all other APIs in the
+application should be protected, ensuring that only authenticated users with a valid
+token or session are able to access them.
+2. Role Management
+The system must implement Role Management with two types of users: Admin and
+Normal User. Admin users should have full access to Category Management,
+which means they can create, update, and delete categories. Normal users, on the
+other hand, are restricted in their access — they cannot create, update, or delete
+categories. Instead, they can only assign their tasks to the categories that have
+already been created and maintained by Admin users.
+Sharp And Tannan Associates3. Categories Management (Admin-only)
+The system should include a Categories Management feature that is accessible only
+to Admin users. Through this functionality, Admins will be able to add new
+categories such as “Work” or “Personal,” maintain an updated list of available
+categories, make changes to existing categories whenever required, and also
+remove categories that are no longer needed.
+4. Task Management (All Users)
+The system should provide a Task Management feature that is available to all users.
+Each user should be able to add new tasks with details such as a title, description,
+status (for example: Todo, Doing, or Done), a due date, and an associated category.
+Users should also be able to view a list of their own tasks, update the details of
+these tasks when required, and manage their progress by changing the status.
+However, a user can only edit the status of a task before its due date; once the
+due date has passed, the status can no longer be changed.
+5. Admin Dashboard
+The system should also include an Admin Dashboard that provides a complete view
+of all tasks created by users. This dashboard should display each task along with its
+due date and current status, giving Admins visibility into overall activity. To make
+management easier, the dashboard should also include filtering options that allow
+Admins to narrow down the list of tasks based on specific users, due dates, or task
+statuses. This ensures that Admins can quickly identify pending work, overdue
+tasks, or user-specific progress when needed.
+Sharp And Tannan Associates6. Dockerized The Code
+The final step of the project is to ensure the entire application is Dockerized so that
+it can be run easily in any environment. The system should be packaged with Docker
+in such a way that both the backend application and the database can be started
+with a single command, typically using Docker Compose. All necessary
+environment variables such as database credentials, ports, and secret keys should
+be configurable through a .env file, and clear instructions should be provided in the
+documentation.
+Additional Information:
+•
+•
+•
+Use Node.js OR Python create APIs and backend services.
+Choose MySQL or Postgres for the database.
+Follow the MVC coding structure.
+Code Submission:
+•
+•
+•
+The task should be completed within 24 hours.
+A working demo video should be attached to the GitHub readme.
+The code needs to be published on GitHub, and the GitHub repository link should
+be provided in the email.
+Sharp And Tannan Associates
