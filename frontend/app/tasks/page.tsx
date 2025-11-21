@@ -173,6 +173,41 @@ export default function Tasks() {
           </div>
         </div>
 
+        <div className="flex flex-wrap gap-3 mb-6">
+          <select
+            value={filterPriority}
+            onChange={(e) => setFilterPriority(e.target.value)}
+            className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none bg-white dark:bg-gray-800 dark:text-white"
+          >
+            <option value="">All Priorities</option>
+            <option value="HIGH">High Priority</option>
+            <option value="MEDIUM">Medium Priority</option>
+            <option value="LOW">Low Priority</option>
+          </select>
+
+          <select
+            value={sortBy}
+            onChange={(e) => setSortBy(e.target.value as any)}
+            className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none bg-white dark:bg-gray-800 dark:text-white"
+          >
+            <option value="dueDate">Sort by Due Date</option>
+            <option value="priority">Sort by Priority</option>
+            <option value="created">Sort by Created</option>
+          </select>
+
+          {(filterPriority || sortBy !== 'dueDate') && (
+            <button
+              onClick={() => {
+                setFilterPriority('');
+                setSortBy('dueDate');
+              }}
+              className="px-4 py-2 text-sm text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white transition"
+            >
+              Clear Filters
+            </button>
+          )}
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
             { status: 'TODO', label: 'To Do', color: 'bg-gray-100' },
