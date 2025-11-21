@@ -21,6 +21,11 @@ A full-stack task management application with user authentication, role-based ac
 - **Smooth Animations**: Framer Motion powered transitions
 - **Responsive Design**: Mobile-first, works on all devices
 - **Loading States**: Elegant loading indicators
+- **Dark Mode**: Toggle between light and dark themes with persistence
+- **Keyboard Shortcuts**: ⌘K for search, ⌘N for new task
+- **Task Filtering**: Filter by priority level
+- **Task Sorting**: Sort by due date, priority, or created date
+- **Task Statistics**: Real-time dashboard showing task counts and overdue items
 
 ## 🛠️ Tech Stack
 
@@ -227,6 +232,13 @@ NEXT_PUBLIC_API_URL=http://localhost:5000/api
 ✅ Responsive UI with TailwindCSS  
 ✅ Loading states  
 ✅ 404 page  
+✅ Dark mode with theme persistence  
+✅ Keyboard shortcuts (⌘K, ⌘N)  
+✅ Task filtering by priority  
+✅ Task sorting (due date, priority, created)  
+✅ Real-time task statistics dashboard  
+✅ SEO optimized with meta tags  
+✅ Accessibility improvements (ARIA labels)  
 
 ## 🎨 UI/UX Features
 
@@ -242,9 +254,9 @@ NEXT_PUBLIC_API_URL=http://localhost:5000/api
 
 The application comes pre-seeded with:
 - 1 Admin user
-- 3 Normal users
+- 5 Normal users
 - 6 Categories (Work, Personal, Urgent, Meeting, Development, Design)
-- 12 Sample tasks with various statuses and priorities
+- 20 Sample tasks with various statuses, priorities, and due dates
 
 ## 📝 License
 
