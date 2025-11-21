@@ -212,16 +212,16 @@ export default function Tasks() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
-            { status: 'TODO', label: 'To Do', color: 'bg-gray-100' },
-            { status: 'DOING', label: 'In Progress', color: 'bg-blue-50' },
-            { status: 'DONE', label: 'Done', color: 'bg-green-50' }
+            { status: 'TODO', label: 'To Do', color: 'bg-gray-100 dark:bg-gray-800' },
+            { status: 'DOING', label: 'In Progress', color: 'bg-blue-50 dark:bg-blue-900/20' },
+            { status: 'DONE', label: 'Done', color: 'bg-green-50 dark:bg-green-900/20' }
           ].map(({ status, label, color }) => (
             <div key={status} className={`${color} rounded-xl p-4 shadow-sm`}>
               <div className="flex items-center justify-between mb-4">
-                <h2 className="font-semibold text-gray-700 uppercase text-sm tracking-wide">
+                <h2 className="font-semibold text-gray-700 dark:text-gray-300 uppercase text-sm tracking-wide">
                   {label}
                 </h2>
-                <span className="bg-white text-gray-600 px-3 py-1 rounded-full text-xs font-semibold shadow-sm">
+                <span className="bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 px-3 py-1 rounded-full text-xs font-semibold shadow-sm">
                   {getTasksByStatus(status).length}
                 </span>
               </div>
@@ -240,11 +240,11 @@ export default function Tasks() {
                 </AnimatePresence>
                 
                 {getTasksByStatus(status).length === 0 && (
-                  <div className="text-center py-12 bg-white rounded-lg border-2 border-dashed border-gray-200">
-                    <svg className="w-12 h-12 text-gray-300 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="text-center py-12 bg-white dark:bg-gray-800 rounded-lg border-2 border-dashed border-gray-200 dark:border-gray-700">
+                    <svg className="w-12 h-12 text-gray-300 dark:text-gray-600 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
-                    <p className="text-gray-400 text-sm">No tasks</p>
+                    <p className="text-gray-400 dark:text-gray-500 text-sm">No tasks</p>
                   </div>
                 )}
               </div>
@@ -253,58 +253,58 @@ export default function Tasks() {
         </div>
 
         <div className="mt-8 grid grid-cols-1 md:grid-cols-4 gap-4">
-          <div className="bg-white rounded-lg p-4 shadow-sm border border-gray-200">
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-200 dark:border-gray-700">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-gray-500 text-sm">Total Tasks</p>
-                <p className="text-2xl font-bold text-gray-800">{tasks.length}</p>
+                <p className="text-gray-500 dark:text-gray-400 text-sm">Total Tasks</p>
+                <p className="text-2xl font-bold text-gray-800 dark:text-white">{tasks.length}</p>
               </div>
-              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center">
+                <svg className="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                 </svg>
               </div>
             </div>
           </div>
 
-          <div className="bg-white rounded-lg p-4 shadow-sm border border-gray-200">
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-200 dark:border-gray-700">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-gray-500 text-sm">Completed</p>
-                <p className="text-2xl font-bold text-green-600">{getTasksByStatus('DONE').length}</p>
+                <p className="text-gray-500 dark:text-gray-400 text-sm">Completed</p>
+                <p className="text-2xl font-bold text-green-600 dark:text-green-400">{getTasksByStatus('DONE').length}</p>
               </div>
-              <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-                <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-12 h-12 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center">
+                <svg className="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
             </div>
           </div>
 
-          <div className="bg-white rounded-lg p-4 shadow-sm border border-gray-200">
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-200 dark:border-gray-700">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-gray-500 text-sm">In Progress</p>
-                <p className="text-2xl font-bold text-blue-600">{getTasksByStatus('DOING').length}</p>
+                <p className="text-gray-500 dark:text-gray-400 text-sm">In Progress</p>
+                <p className="text-2xl font-bold text-blue-600 dark:text-blue-400">{getTasksByStatus('DOING').length}</p>
               </div>
-              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center">
+                <svg className="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
             </div>
           </div>
 
-          <div className="bg-white rounded-lg p-4 shadow-sm border border-gray-200">
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-200 dark:border-gray-700">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-gray-500 text-sm">Overdue</p>
-                <p className="text-2xl font-bold text-red-600">
+                <p className="text-gray-500 dark:text-gray-400 text-sm">Overdue</p>
+                <p className="text-2xl font-bold text-red-600 dark:text-red-400">
                   {tasks.filter(t => new Date(t.dueDate) < new Date() && t.status !== 'DONE').length}
                 </p>
               </div>
-              <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
-                <svg className="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-12 h-12 bg-red-100 dark:bg-red-900 rounded-full flex items-center justify-center">
+                <svg className="w-6 h-6 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>

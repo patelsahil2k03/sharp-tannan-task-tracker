@@ -31,19 +31,19 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 px-4">
-      <div className="bg-white p-8 rounded-xl shadow-2xl w-full max-w-md">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 px-4">
+      <div className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-2xl w-full max-w-md">
         <div className="flex flex-col items-center mb-8">
           <Image src="/logo.png" alt="Sharp & Tannan" width={120} height={120} className="object-contain mb-4" />
-          <h1 className="text-3xl font-bold text-center text-gray-800">Task Tracker</h1>
-          <p className="text-gray-600 text-sm mt-2">Sign in to manage your tasks</p>
+          <h1 className="text-3xl font-bold text-center text-gray-800 dark:text-white">Task Tracker</h1>
+          <p className="text-gray-600 dark:text-gray-300 text-sm mt-2">Sign in to manage your tasks</p>
         </div>
 
         <div className="mb-6 relative">
           <button
             type="button"
             onClick={() => setShowCredentials(!showCredentials)}
-            className="w-full bg-blue-50 text-blue-700 px-4 py-3 rounded-lg text-sm flex items-center justify-center space-x-2 hover:bg-blue-100 transition"
+            className="w-full bg-blue-50 dark:bg-blue-900 text-blue-700 dark:text-blue-200 px-4 py-3 rounded-lg text-sm flex items-center justify-center space-x-2 hover:bg-blue-100 dark:hover:bg-blue-800 transition"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -75,29 +75,29 @@ export default function Login() {
         
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email</label>
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
+              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
               required
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Password</label>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Password</label>
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
+              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
               required
             />
           </div>
 
           {error && (
-            <div className="bg-red-50 text-red-600 px-4 py-2 rounded-lg text-sm">
+            <div className="bg-red-50 dark:bg-red-900/30 text-red-600 dark:text-red-400 px-4 py-2 rounded-lg text-sm">
               {error}
             </div>
           )}
@@ -111,7 +111,7 @@ export default function Login() {
           </button>
         </form>
 
-        <p className="text-center mt-6 text-gray-600">
+        <p className="text-center mt-6 text-gray-600 dark:text-gray-400">
           Don't have an account?{' '}
           <Link href="/register" className="text-primary hover:underline">
             Register
