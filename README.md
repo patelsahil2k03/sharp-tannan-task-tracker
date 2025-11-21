@@ -2,8 +2,9 @@
 
 A full-stack task management application with user authentication, role-based access control, and admin dashboard built for Sharp and Tannan.
 
-## Features
+## 🎯 Features
 
+### Core Features
 - **User Authentication**: Secure registration and login with JWT tokens
 - **Role Management**: Admin and Normal User roles with different permissions
 - **Category Management**: Admin-only CRUD operations for task categories
@@ -12,7 +13,16 @@ A full-stack task management application with user authentication, role-based ac
 - **Status Tracking**: Automatic due date validation for status changes
 - **Admin Dashboard**: Complete overview with filtering and statistics
 
-## Tech Stack
+### Enhanced Features
+- **Task Priority**: Low, Medium, High priority levels with color-coded badges
+- **Search Functionality**: Real-time task search by title and description
+- **Toast Notifications**: Success/error feedback for all actions
+- **Confirm Dialogs**: Safe deletion with confirmation prompts
+- **Smooth Animations**: Framer Motion powered transitions
+- **Responsive Design**: Mobile-first, works on all devices
+- **Loading States**: Elegant loading indicators
+
+## 🛠️ Tech Stack
 
 **Backend:**
 - Node.js + Express (MVC Architecture)
@@ -25,13 +35,14 @@ A full-stack task management application with user authentication, role-based ac
 - Next.js 14 (React Framework)
 - TypeScript
 - TailwindCSS (Styling)
+- Framer Motion (Animations)
 - Axios (API calls)
 
 **DevOps:**
 - Docker + Docker Compose
 - Multi-container setup
 
-## Quick Start
+## 🚀 Quick Start
 
 ### Prerequisites
 - Docker and Docker Compose installed
@@ -39,6 +50,11 @@ A full-stack task management application with user authentication, role-based ac
 ### Run with Docker (Recommended)
 
 ```bash
+# Clone the repository
+git clone https://github.com/patelsahil2k03/sharp-tannan-task-tracker.git
+cd sharp-tannan-task-tracker
+
+# Start all services
 docker-compose up --build
 ```
 
@@ -46,13 +62,27 @@ The application will be available at:
 - **Frontend**: http://localhost:3000
 - **Backend API**: http://localhost:5000
 
-### Default Admin Credentials
+### Default Credentials
+
+**Admin Account:**
 ```
 Email: admin@sharpandtannan.com
 Password: Admin@123
 ```
 
-## Local Development
+**User Accounts:**
+```
+Email: john.doe@example.com
+Password: User@123
+
+Email: jane.smith@example.com
+Password: User@123
+
+Email: mike.wilson@example.com
+Password: User@123
+```
+
+## 💻 Local Development
 
 ### Backend Setup
 
@@ -79,7 +109,7 @@ npm run dev
 
 Frontend runs on: http://localhost:3000
 
-## API Endpoints
+## 📡 API Endpoints
 
 ### Authentication
 - `POST /api/auth/register` - Register new user
@@ -105,7 +135,7 @@ Frontend runs on: http://localhost:3000
 - `GET /api/admin/users` - Get all users with task counts
 - `GET /api/admin/stats` - Get dashboard statistics
 
-## Project Structure
+## 📁 Project Structure
 
 ```
 ├── backend/
@@ -114,7 +144,7 @@ Frontend runs on: http://localhost:3000
 │   │   │   ├── authController.js
 │   │   │   ├── categoryController.js
 │   │   │   ├── taskController.js
-│   │   │   └── adminController.js
+│   │   └── adminController.js
 │   │   ├── routes/           # API routes
 │   │   ├── middleware/       # Auth & validation
 │   │   ├── config/           # Database config
@@ -137,7 +167,7 @@ Frontend runs on: http://localhost:3000
 └── README.md
 ```
 
-## Environment Variables
+## 🔧 Environment Variables
 
 ### Backend (.env)
 ```env
@@ -153,7 +183,7 @@ NODE_ENV=production
 NEXT_PUBLIC_API_URL=http://localhost:5000/api
 ```
 
-## Business Rules
+## 📋 Business Rules
 
 1. **User Registration**: 
    - Email must be unique
@@ -169,15 +199,16 @@ NEXT_PUBLIC_API_URL=http://localhost:5000/api
    - Users can only view and manage their own tasks
    - Tasks can have multiple categories
    - **Status can only be changed BEFORE the due date**
-   - Title, description, and categories can be edited anytime
+   - Title, description, categories, and priority can be edited anytime
    - Tasks are organized in Kanban board: Todo → Doing → Done
+   - Priority levels: Low (Green), Medium (Yellow), High (Red)
 
 4. **Admin Dashboard**: 
    - Admins can view all tasks from all users
    - Filter tasks by user, status, or due date range
    - View statistics: total users, tasks, categories, overdue tasks
 
-## Features Implemented
+## ✨ Features Implemented
 
 ✅ User authentication with JWT  
 ✅ Role-based access control (Admin/User)  
@@ -187,9 +218,38 @@ NEXT_PUBLIC_API_URL=http://localhost:5000/api
 ✅ Due date validation for status changes  
 ✅ Admin dashboard with filters  
 ✅ Statistics and analytics  
+✅ Task priority levels  
+✅ Search functionality  
+✅ Toast notifications  
+✅ Confirm dialogs  
+✅ Smooth animations  
 ✅ Fully Dockerized setup  
 ✅ Responsive UI with TailwindCSS  
+✅ Loading states  
+✅ 404 page  
 
-## License
+## 🎨 UI/UX Features
+
+- **Minimalistic Design**: Clean, modern interface inspired by Linear and Notion
+- **Smooth Animations**: Framer Motion powered transitions
+- **Hover Effects**: Interactive elements with visual feedback
+- **Color-Coded Priority**: Visual priority indicators
+- **Empty States**: Helpful illustrations when no data
+- **Mobile Responsive**: Works seamlessly on all screen sizes
+- **Sticky Navigation**: Always accessible navigation bar
+
+## 🧪 Sample Data
+
+The application comes pre-seeded with:
+- 1 Admin user
+- 3 Normal users
+- 6 Categories (Work, Personal, Urgent, Meeting, Development, Design)
+- 12 Sample tasks with various statuses and priorities
+
+## 📝 License
 
 MIT
+
+---
+
+**Built with ❤️ for Sharp and Tannan**
