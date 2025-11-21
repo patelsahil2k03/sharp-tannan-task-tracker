@@ -1,165 +1,130 @@
-Sharp & Tannan — Brand Theme & Color Context
-1. Brand Identity / Personality
+# Sharp & Tannan — Brand Theme & Color Context
 
-The Sharp & Tannan brand communicates a professional, trustworthy, corporate, and legacy-driven identity.
+## 1. Brand Identity / Personality
 
-Tone: Formal, authoritative, reliable
+The Sharp & Tannan brand communicates a **professional, trustworthy, corporate, and legacy-driven** identity.
 
-Visual Personality: Clean, structured, traditional yet modernized
+- **Tone:** Formal, authoritative, reliable
+- **Visual Personality:** Clean, structured, traditional yet modernized
+- **Target Audience:** Corporates, enterprises, regulatory bodies, high-trust finance clients
+- **Overall Feel:** Stable, established, dependable, compliance-focused
 
-Target Audience: Corporates, enterprises, regulatory bodies, high-trust finance clients
+---
 
-Overall Feel: Stable, established, dependable, compliance-focused
+## 2. Color Palette & Usage Pattern
 
-2. Color Palette & Usage Pattern
-Primary Colors
-Teal / Aqua Green (#10BFA4 – approximate)
+### Primary Colors
 
-Used as the main strong brand color, dominant in headers, section backgrounds, and icons.
+**Teal / Aqua Green** `#10BFA4`
+- Used as the main strong brand color, dominant in headers, section backgrounds, and icons
+- **Represents:** Stability, trust, clarity, corporate identity
+- **Usage:** Bold sections, service blocks, header
 
-Represents: Stability, trust, clarity, corporate identity
+**Deep Navy Blue** `#0A0F3A`
+- Used as the secondary brand anchor, especially for heavy content sections
+- **Represents:** Expertise, seriousness, tradition, finance
+- **Usage:** Background of "Evolution" section, footer-like areas, long text blocks
 
-Usage: Bold sections, service blocks, header
+### Neutral Colors
 
-Deep Navy Blue (#0A0F3A – approximate)
+**White** `#FFFFFF`
+- Used generously in text, icons, and spacing
+- Keeps contrast high and maintains clarity
 
-Used as the secondary brand anchor, especially for heavy content sections.
+**Light Gray** `#EAEAEA`
+- Used for separators and minimal supporting elements
 
-Represents: Expertise, seriousness, tradition, finance
+---
 
-Usage: Background of “Evolution” section, footer-like areas, long text blocks
+## 3. Color Style Notes
 
-Neutral Colors
-White (#FFFFFF)
+- **High contrast theme:** Teal + White and Navy + White
+- Clearly separates sections by solid blocks of color
+- Corporate feel—strong, rectangular, minimal gradients
+- Sparing use of gradients (only in hero banner)
 
-Used generously in text, icons, and spacing
+---
 
-Keeps contrast high and maintains clarity
+## 4. Typography Style
 
-Light Gray (#EAEAEA approx.)
+### Font Style
+- Clean, geometric sans-serif (likely Montserrat / Lato / similar)
+- High readability and uniformity
 
-Used for separators and minimal supporting elements
+### Hierarchy
+- **Large Headers:** Bold, white text on solid backgrounds
+- **Body Text:** Small, centered, neutral
+- **Service Icons:** Simple line icons matching teal theme
 
-3. Color Style Notes
+### Personality
+- Professional, corporate, not playful
 
-High contrast theme: Teal + White and Navy + White
+---
 
-Clearly separates sections by solid blocks of color
+## 5. UI Structure & Layout
 
-Corporate feel—strong, rectangular, minimal gradients
+### Layout Principles
+- Very block-based, clear sectional divisions
+- Strong color contrast for scannability
+- Sections are horizontal full-width bands of different colors
+- Central alignment throughout
 
-Sparing use of gradients (only in hero banner)
+### Hero Banner
+- Uses a subtle sunset gradient image overlay
+- White text placed over the muted background
 
-4. Typography Style
-Font Style
+### Services Section
+- Teal background
+- Services shown through simple icons with short labels
 
-Clean, geometric sans-serif (likely Montserrat / Lato / similar)
+### Evolution Section
+- Navy background
+- Three-column timeline-style text
+- White minimal typography
 
-High readability and uniformity
+### Presence in India Map Section
+- Teal header
+- Dark-themed map of India with pinpoints
+- Consistent brand contrast
 
-Hierarchy
+---
 
-Large Headers: Bold, white text on solid backgrounds
+## 6. Component Patterns
 
-Body Text: Small, centered, neutral
+### Service Icons
+- Simple line icons
+- Monochrome, teal/white-based
+- Center-aligned under each label
 
-Service Icons: Simple line icons matching teal theme
+### "Know more" Button
+- Very small, understated, minimal button
+- Not a CTA-heavy site
 
-Personality
+### Map Component
+- Uses dotted/pin visual markers
+- Styled in dark blue tones to match secondary brand color
 
-Professional, corporate, not playful.
+---
 
-5. UI Structure & Layout
-Layout Principles
+## 7. Brand Personality Keywords
 
-Very block-based, clear sectional divisions
+Corporate • Trustworthy • Legacy-driven • Professional • Regulatory-compliant • Structured • Serious • Established
 
-Strong color contrast for scannability
+---
 
-Sections are horizontal full-width bands of different colors
+## 8. What to Avoid
 
-Central alignment throughout
+- ❌ Warm colors (reds, yellows, oranges)
+- ❌ Overly rounded UI — brand uses rectangular clean edges
+- ❌ Playful or casual tone
+- ❌ Excessive whitespace — this site favors structured blocks
+- ❌ Soft organic themes (unlike Delicut, which is warm/approachable)
 
-Hero Banner
+---
 
-Uses a subtle sunset gradient image overlay
+## 9. CSS Variables (Based on Extracted Palette)
 
-White text placed over the muted background
-
-Services Section
-
-Teal background
-
-Services shown through simple icons with short labels
-
-Evolution Section
-
-Navy background
-
-Three-column timeline-style text
-
-White minimal typography
-
-Presence in India Map Section
-
-Teal header
-
-Dark-themed map of India with pinpoints
-
-Consistent brand contrast
-
-6. Component Patterns
-Service Icons
-
-Simple line icons
-
-Monochrome, teal/white-based
-
-Center-aligned under each label
-
-“Know more” button
-
-Very small, understated, minimal button
-
-Not a CTA-heavy site
-
-Map Component
-
-Uses dotted/pin visual markers
-
-Styled in dark blue tones to match secondary brand color
-
-7. Brand Personality Keywords
-
-Corporate
-
-Trustworthy
-
-Legacy-driven
-
-Professional
-
-Regulatory-compliant
-
-Structured
-
-Serious
-
-Established
-
-8. What to Avoid
-
-❌ Warm colors (reds, yellows, oranges)
-
-❌ Overly rounded UI — brand uses rectangular clean edges
-
-❌ Playful or casual tone
-
-❌ Excessive whitespace — this site favors structured blocks
-
-❌ Soft organic themes (unlike Delicut, which is warm/approachable)
-
-9. CSS Variables (Based on Extracted Palette)
+```css
 :root {
   --primary-teal: #10BFA4;      /* Main section color */
   --secondary-navy: #0A0F3A;    /* Deep corporate blue */
@@ -168,8 +133,12 @@ Established
   --text-dark: #0A0F3A;
   --gray-light: #EAEAEA;
 }
+```
 
-10. Summary
+---
 
-Sharp & Tannan’s design conveys heritage + corporate trust + modern clarity.
-Unlike Delicut (organic, warm, friendly), this brand is formal, structured, and authoritative, using bold color blocks and strong contrast to communicate professionalism and reliability.
+## 10. Summary
+
+Sharp & Tannan's design conveys **heritage + corporate trust + modern clarity**.
+
+Unlike Delicut (organic, warm, friendly), this brand is **formal, structured, and authoritative**, using bold color blocks and strong contrast to communicate professionalism and reliability.

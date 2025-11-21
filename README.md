@@ -74,6 +74,7 @@ docker-compose up --build
 3. **Access the application**
 - **Frontend (Main App):** http://localhost:3000
 - **Backend API:** http://localhost:5000
+- **API Documentation:** http://localhost:5000/api-docs
 
 The application will automatically:
 - ✅ Set up PostgreSQL database
